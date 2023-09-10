@@ -1,41 +1,33 @@
-const path = require('path');
-const htmlWebpackPlugin = require('html-webpack-plugin');
+const path = require("path");
 
 module.exports = {
-    mode: 'development',
-    entry: path.resolve(__dirname, './src/index.js'),
+    mode: "development",
+    entry: path.resolve(__dirname, "src/index.js"),
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: '[name][contentHash].js',
-        clean: true,
+        path: path.resolve(__dirname, "dist"),
+        filename: "index.js",
+        clean: true,        
     },
-    devtool: 'source-map',
+    devtool: "source-map",
     devServer: {
         static: {
-            directory: path.resolve(__dirname, 'dist'),
+            directory: path.resolve(__dirname, "dist"),
+            serveIndex: true,
         },
-        hot: true,
+        hot: 'only',
         port: 3000,
-        compress: true,        
+        compress: true,
     },
     module: {
         rules: [
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader'],
+                use: ["style-loader", "css-loader"],
             },
             {
-                test: /\.(jpg|svg)$/,
-                type: 'asset/resource'
-            }
-        ]
-    },
-    plugins: [
-        new htmlWebpackPlugin({
-            title: 'odin-todo-list',
-            filename: 'index.html',
-            template: './src/template.html'
-        })
-    ]
-
-}
+                test: /\.(png|svg|jpg|jpeg|gif)$/i,
+                type: "asset/resource",
+            },     
+        ],
+    },       
+};

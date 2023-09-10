@@ -1,3 +1,106 @@
-p {
-    color: blue;
+/* global styles */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #EEEEEE;
+    --secondary-color: #222831;
+    --primary-color-shade: #F5F5F5;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: 1.6rem;    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: min-content 1fr min-content;
+}
+
+/* header */
+header {    
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    padding: 2rem 4rem;
+    grid-area: 1 / 1 / 2 / 3; 
+
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+header img {    
+    filter: invert(100%) sepia(4%) saturate(18%) hue-rotate(54deg) brightness(104%) contrast(104%);
+    width:4%;
+    aspect-ratio: 1/1;
+}
+
+/* aside */
+aside {
+    padding: 2rem;
+    grid-area: 2 / 1 / 3 / 2;
+    background-color: var(--primary-color);
+    display: grid;
+    grid-template-rows: 1fr 2fr;
+}
+
+aside nav {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+}
+
+aside button {
+    padding: .6em 1em;
+    font-size: 1.6rem;
+    align-items: center;    
+    font-size: 1.6rem;    
+    border: none;
+
+    display: flex;
+    gap: .5em;
+}
+
+aside button:focus,
+aside button:hover {
+    filter: brightness(90%);
+}
+
+button img {
+    width: 1.5em;
+    aspect-ratio: 1/1;
+}
+
+.project-nav {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-nav h2 {
+    margin-bottom: 1rem;
+}
+
+/* main  */
+main {    
+    grid-area: 2 / 2 / 3 / 3;
+    background-color: var(--primary-color-shade);
+}
+
+/* footer */
+footer {
+    background-color: var(--secondary-color);
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 1.6rem;
+    padding: .5rem 0;
+    grid-area: 3 / 1 / 4 / 3;
 }
