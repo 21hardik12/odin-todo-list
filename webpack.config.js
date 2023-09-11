@@ -1,4 +1,6 @@
 const path = require("path");
+const copyWebpackPlugin = require("copy-webpack-plugin");
+const writeFileWebpackPlugin = require("write-file-webpack-plugin");
 
 module.exports = {
     mode: "development",
@@ -30,4 +32,12 @@ module.exports = {
             },     
         ],
     },       
+    plugins: [
+        new writeFileWebpackPlugin(),
+        new copyWebpackPlugin({
+            patterns: [
+                {from: path.resolve(__dirname, "src/assets"), to: path.resolve(__dirname, "dist/assets")}
+            ]
+        }),
+    ]
 };

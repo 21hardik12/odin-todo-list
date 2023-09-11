@@ -59,7 +59,7 @@ aside nav {
     gap: .2rem;
 }
 
-aside button {
+button {
     padding: .6em 1em;
     font-size: 1.6rem;
     align-items: center;    
@@ -70,9 +70,13 @@ aside button {
     gap: .5em;
 }
 
-aside button:focus,
-aside button:hover {
+button:focus,
+button:hover {
     filter: brightness(90%);
+}
+
+nav button:focus {
+    font-weight: bold;
 }
 
 button img {
@@ -91,7 +95,21 @@ button img {
 
 /* main  */
 main {    
+    background-color: var(--primary-color-shade);
+    padding: 2rem 10rem 2rem 10rem;
+
     grid-area: 2 / 2 / 3 / 3;
+
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+main h2 {
+    padding-left: 2rem;
+}
+
+main button {
     background-color: var(--primary-color-shade);
 }
 

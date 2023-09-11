@@ -1,3 +1,13 @@
 import './style.css';
+import {Todo} from './todo.js';
+import {Project} from './project.js';
+import {screenController} from './screen_controller.js';
 
-console.log('working');
+
+
+screenController();
+
+if (module.hot) {
+    module.hot.accept();
+}
+
