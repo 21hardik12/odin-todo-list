@@ -1,29 +1,94 @@
-import { Project } from "./project";
+import {
+    Project,
+    addProject,
+    removeProject,
+    createProjectBtn,
+} from "./project";
 import { renderProject } from "./render_project";
 import { renderThisWeek } from "./this_week";
 import { renderToday } from "./today";
 
-
-const main = document.querySelector('.main');
-
-const inbox = Project(1, 'Inbox');
+const inbox = Project(1, "inbox");
 
 const screenController = () => {
-    const inboxBtn = document.querySelector("#inboxBtn");
-    const todayBtn = document.querySelector("#todayBtn");
-    const thisWeekBtn = document.querySelector("#thisWeekBtn");
-    const addProjectBtn = document.querySelector('#addProjectBtn');
+    const nav = document.querySelector(".main-nav");
+    console.log(nav);
 
-    inboxBtn.addEventListener('click', e => {        
-        renderProject(inbox);
-    })
-    inboxBtn.click();
-    todayBtn.addEventListener('click', e => {
-        renderToday();
-    })
-    thisWeekBtn.addEventListener('click', e => {
-        renderThisWeek();
-    })
+    nav.addEventListener("click", (event) => {
+        const target = event.target;
+        if (target.classList.contains("btn")) {            
+            if (target.id === "inboxBtn") {                
+                renderProject(inbox);
+            } else if (target.id === "todayBtn") {
+                renderToday();
+            } else if (target.id === "thisWeekBtn") {
+                renderThisWeek();
+            }
+        }
+    });
+
+    // const inboxBtn = document.querySelector("#inboxBtn");
+    // const todayBtn = document.querySelector("#todayBtn");
+    // const thisWeekBtn = document.querySelector("#thisWeekBtn");
+    const addProjectBtn = document.querySelector("#addProjectBtn");
+
+    // inboxBtn.addEventListener("click", (e) => {
+    //     renderProject(inbox);
+    // });
+    // inboxBtn.click();
+    // todayBtn.addEventListener("click", (e) => {
+    //     renderToday();
+    // });
+    // thisWeekBtn.addEventListener("click", (e) => {
+    //     renderThisWeek();
+    // });
+
+    addProjectBtn.addEventListener("click", (e) => {
+        addProjectBtn.style.display = "none";
+        const projectNameInput = document.createElement("input");
+        const projectNav = document.querySelector(".project-nav");
+        projectNameInput.type = "text";
+        projectNameInput.placeholder = "Project Name";
+
+        const projectNameInputHandle = () => {
+            const prj = addProject(projectNameInput.value);
+            const projectBtn = createProjectBtn(prj);
+            projectNav.appendChild(projectBtn);
+            projectNav.appendChild(addProjectBtn);
+            addProjectBtn.style.display = "flex";
+
+            projectNameInput.removeEventListener("blur", eventHandle2);
+            projectNameInput.removeEventListener("keyup", eventHandle1);
+            projectNameInput.remove();
+        };
+
+        const eventHandle1 = (e) => {
+            if (e.key === "Enter") {
+                projectNameInputHandle();
+            } else if (e.key === "Escape") {
+                addProjectBtn.style.display = "flex";
+                projectNameInput.removeEventListener("blur", eventHandle2);
+                projectNameInput.removeEventListener("keyup", eventHandle1);
+                projectNameInput.remove();
+            }
+        };
+
+        const eventHandle2 = (e) => {
+            if (!projectNameInput.value) {
+                addProjectBtn.style.display = "flex";
+                projectNameInput.removeEventListener("blur", eventHandle2);
+                projectNameInput.removeEventListener("keyup", eventHandle1);
+                projectNameInput.remove();
+            } else {
+                projectNameInputHandle();
+            }
+        };
+
+        projectNameInput.addEventListener("keyup", eventHandle1);
+        projectNameInput.addEventListener("blur", eventHandle2);
+        projectNav.appendChild(projectNameInput);
+        projectNameInput.focus();
+    });
 };
 
-export {screenController};
+export { screenController };

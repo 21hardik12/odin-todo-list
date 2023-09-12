@@ -26,6 +26,12 @@ body {
     grid-template-rows: min-content 1fr min-content;
 }
 
+input[type="text"] {
+    width: 100%;
+    font-size: 1.6rem;
+    padding: .2em .4em;
+}
+
 /* header */
 header {    
     color: var(--primary-color);
@@ -62,11 +68,11 @@ aside nav {
 button {
     padding: .6em 1em;
     font-size: 1.6rem;
-    align-items: center;    
     font-size: 1.6rem;    
     border: none;
-
+    
     display: flex;
+    align-items: center;    
     gap: .5em;
 }
 
@@ -92,6 +98,11 @@ button img {
 .project-nav h2 {
     margin-bottom: 1rem;
 }
+
+.prj-btn .delete-project-btn {    
+    margin-left: auto;
+}
+
 
 /* main  */
 main {    
