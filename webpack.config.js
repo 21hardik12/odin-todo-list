@@ -36,7 +36,8 @@ module.exports = {
         new writeFileWebpackPlugin(),
         new copyWebpackPlugin({
             patterns: [
-                {from: path.resolve(__dirname, "src/assets"), to: path.resolve(__dirname, "dist/assets")}
+                {from: path.resolve(__dirname, "src/assets"), to: path.resolve(__dirname, "dist/assets")},
+                {from: path.resolve(__dirname, "src/index.html"), to: path.resolve(__dirname, "dist/index.html")}
             ]
         }),
     ]

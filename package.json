@@ -4,6 +4,7 @@
   "description": "Todo List Application",
   "main": "index.js",
   "scripts": {
+    "buildPages": "git subtree push --prefix dist origin gh-pages",
     "dev": "webpack serve",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
