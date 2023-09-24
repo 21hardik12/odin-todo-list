@@ -8,11 +8,10 @@ import { renderProject } from "./render_project";
 import { renderThisWeek } from "./this_week";
 import { renderToday } from "./today";
 
-const inbox = Project(1, "inbox");
+const inbox = Project(0, "inbox");
 
 const screenController = () => {
     const nav = document.querySelector(".main-nav");
-    console.log(nav);
 
     nav.addEventListener("click", (event) => {
         const target = event.target;
@@ -27,21 +26,7 @@ const screenController = () => {
         }
     });
 
-    // const inboxBtn = document.querySelector("#inboxBtn");
-    // const todayBtn = document.querySelector("#todayBtn");
-    // const thisWeekBtn = document.querySelector("#thisWeekBtn");
     const addProjectBtn = document.querySelector("#addProjectBtn");
-
-    // inboxBtn.addEventListener("click", (e) => {
-    //     renderProject(inbox);
-    // });
-    // inboxBtn.click();
-    // todayBtn.addEventListener("click", (e) => {
-    //     renderToday();
-    // });
-    // thisWeekBtn.addEventListener("click", (e) => {
-    //     renderThisWeek();
-    // });
 
     addProjectBtn.addEventListener("click", (e) => {
         addProjectBtn.style.display = "none";

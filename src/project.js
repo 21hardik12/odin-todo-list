@@ -1,13 +1,15 @@
 import icon from './assets/format-list-bulleted-square.svg';
+import { Todo } from './todo';
 import { createHtmlElement } from './create_html_element';
 import { clearMain } from './main';
 import { renderProject } from './render_project';
 
 const Project = (id, title) => {
     const todoList = [];
+    let todoId = 0;
 
-    const addTodo = (todo) => {
-        todoList.push(todo);
+    const addTodo = (title, duedate, imp) => {        
+        todoList.push(Todo(todoId++, title, duedate, imp));
     }
 
     const removeTodo = (todoId) => {
