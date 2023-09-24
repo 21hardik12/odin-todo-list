@@ -76,22 +76,17 @@ const render = (project) => {
 
         importantButton.addEventListener('click', importantButtonHandler);
 
-        const displayTodo = () => {
-            console.log(project.printTodo());
-        }
-
         // handling of save of task input 
         const saveButtonHandler = e => {
             const taskValue = todoInput.value;
             const imp = importantButton.classList.contains('stared');
             const d = dateInput.value;
-
-            project.addTodo(taskValue, d, imp);
-            displayTodo();
-            importantButton.removeEventListener('click', importantButtonHandler);
-            saveButton.removeEventListener('click', saveButtonHandler);
-            content.remove(todoInputDiv);        
-            addTodoBtn.style.display = 'flex';    
+            
+            const _todoDiv = project.addTodo(taskValue, d, imp);            
+            content.appendChild(_todoDiv);
+            content.removeChild(todoInputDiv);        
+            addTodoBtn.style.display = 'flex';   
+            content.appendChild(addTodoBtn); 
         };
         saveButton.addEventListener('click', saveButtonHandler);
 
@@ -115,6 +110,7 @@ const render = (project) => {
     addTodoBtn.addEventListener('click', handleAddTodo);
 
     content.appendChild(title);
+    project.todoDivs().map(_todoDiv => content.appendChild(_todoDiv));
     content.appendChild(addTodoBtn);
 }
 
